@@ -44,6 +44,10 @@ body {
 .details_container {
   margin: 0 auto;
   width: 750px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
 }
 
 .movies {
@@ -57,3 +61,15 @@ img {
   width: 200px;
 }
 
+.poster_details {
+  margin: 13px 13px;
+  width: 200px;
+  height: 375px;
+  box-shadow: 0px 4px 8px 0px;
+  text-align: center;
+  background-color: white;
+}
+
+.movie_specs {
+  margin: 0px 30px;
+}
