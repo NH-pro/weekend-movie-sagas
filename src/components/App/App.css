@@ -3,12 +3,27 @@
   margin: 0 auto;
   width: 1080px;
 }
+
+header {
+  position: fixed;
+  top: 0;
+  width: 1080px;
+  background-color: darkred;
+  border: 7px dotted yellow;
+  color: white;
+  padding: 3px;
+}
+
 body {
   background-color: antiquewhite;
   background-image: url("https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1500/posts/29997/final_image/%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%20%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%202017-11-18_14-8-20.345.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+main {
+  margin-top: 130px;
 }
 
 .App-header {
@@ -43,7 +58,7 @@ body {
   transition: 0.3s;
 }
 .movie_card:hover {
-  box-shadow: 0px 8px 16px 0px;
+  box-shadow: 0px 8px 16px 0px white;
 }
 
 .details_container {
@@ -70,7 +85,7 @@ img {
   margin: 13px 13px;
   width: 200px;
   height: 375px;
-  box-shadow: 0px 4px 8px 0px;
+  box-shadow: 0px 4px 8px 0px white;
   text-align: center;
   background-color: white;
   border-radius: 7px;
@@ -82,3 +97,18 @@ img {
   padding: 10px;
   border-radius: 7px;
 }
+
+.home_btn {
+  padding: 3px;
+  border: 7px dotted yellow;
+  background-color: inherit;
+  border-radius: 3px;
+  color: yellow;
+}
+
+.home_btn:hover {
+  box-shadow: 0px 8px 16px 0px yellow;
+  background-color: yellow;
+  color: darkred;
+}
+
