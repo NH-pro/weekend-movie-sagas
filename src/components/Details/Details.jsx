@@ -13,7 +13,7 @@ function Details() {
                     <div className='movie_specs'>
                         {movieDetails[0].array_agg.map((item) => {
                                 return (
-                                    <h5>{item}</h5>
+                                    <h4>{item}</h4>
                                 )
                             })}
                         <p>{movieDetails[0].description}</p>
