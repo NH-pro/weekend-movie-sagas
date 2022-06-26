@@ -1,7 +1,11 @@
 .App {
   text-align: center;
+  margin: 0 auto;
+  width: 1080px;
 }
-
+body {
+  background-color: antiquewhite;
+}
 
 .App-header {
   background-color: #222;
@@ -22,3 +26,34 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.movie_card {
+  margin: 13px 13px;
+  width: 200px;
+  height: 375px;
+  box-shadow: 0px 4px 8px 0px;
+  text-align: center;
+  background-color: white;
+  transition: 0.3s;
+}
+.movie_card:hover {
+  box-shadow: 0px 8px 16px 0px;
+}
+
+.details_container {
+  margin: 0 auto;
+  width: 750px;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+img {
+  width: 200px;
+}
+
