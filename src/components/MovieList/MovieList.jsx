@@ -17,7 +17,6 @@ function MovieList() {
     //  details component of that movie.
     const handlePosterClick = (event) => {
         history.push(`/details`);
-
         dispatch({
             type: 'GET_DETAILS',
             payload: event.target.id
