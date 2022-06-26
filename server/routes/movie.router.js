@@ -18,9 +18,18 @@ router.get('/', (req, res) => {
 
 // *********************************
 router.get('/:details', (req, res) => {
-  const query = `SELECT *
-                  FROM movies
-                  WHERE "id" = $1;
+  const query = `SELECT
+                    movies.title,
+                    movies.poster,
+                    movies.description,
+                    ARRAY_AGG(genres.name)
+                  FROM movies_genres
+                  JOIN movies
+                  ON movie_id = movies.id
+                  JOIN genres
+                  ON genre_id = genres.id
+                  WHERE movies.id = $1
+                  GROUP BY movies.id;
                 `
   const params = [req.params.details];
 

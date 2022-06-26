@@ -52,7 +52,7 @@ function* fetchAllMovies() {
 const sagaMiddleware = createSagaMiddleware();
 
 // Store selected movie's details
-const details = (state = {}, action) => {
+const details = (state = null, action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return action.payload;
