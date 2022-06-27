@@ -12,6 +12,8 @@ header {
   border: 7px dotted yellow;
   color: white;
   padding: 3px;
+  border-radius: 7px;
+  margin-top: 10px;
 }
 
 body {
@@ -23,7 +25,7 @@ body {
 }
 
 main {
-  margin-top: 130px;
+  margin-top: 160px;
 }
 
 .App-header {
@@ -112,3 +114,10 @@ img {
   color: darkred;
 }
 
+.intro {
+  margin-bottom: 0px;
+}
+
+.big_name {
+  margin-top: 0px;
+}

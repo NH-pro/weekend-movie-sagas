@@ -1,7 +1,21 @@
-import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Details() {
+
+    let id = useParams();
+    const dispatch = useDispatch();
     const movieDetails = useSelector(store => store.details);
+
+    console.log('this is id', id);
+    useEffect(() => {
+        dispatch({
+            type: 'GET_DETAILS',
+            payload: id
+        })
+    }, []);
+
     return (
         <>
             <main>
@@ -14,7 +28,7 @@ function Details() {
                             <div className='movie_specs'>
                                 {movieDetails[0].array_agg.map((item) => {
                                         return (
-                                            <h4>{item}</h4>
+                                            <h4 key={item}>{item}</h4>
                                         )
                                     })}
                                 <p>{movieDetails[0].description}</p>

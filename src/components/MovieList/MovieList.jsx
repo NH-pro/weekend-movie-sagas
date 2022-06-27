@@ -5,10 +5,9 @@ import './MovieList.css'
 
 function MovieList() {
 
+    const movies = useSelector(store => store.movies);
     const history = useHistory();
     const dispatch = useDispatch();
-    const movies = useSelector(store => store.movies);
-
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
@@ -16,16 +15,12 @@ function MovieList() {
     // When movie poster img is clicked, go to the
     //  details component of that movie.
     const handlePosterClick = (event) => {
-        history.push(`/details`);
-        dispatch({
-            type: 'GET_DETAILS',
-            payload: event.target.id
-        })
+        history.push(`/details/${event.target.id}`);
     }
 
     return (
         <main>
-            <h1>MovieList</h1>
+            <h1>Current Feature Films</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
