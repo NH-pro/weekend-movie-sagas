@@ -8,12 +8,14 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
     const history = useHistory();
     const dispatch = useDispatch();
+
+    // On page load, dispatch to fetch movies from DB.
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
     // When movie poster img is clicked, go to the
-    //  details component of that movie.
+    //  details component with a movie specific url param.
     const handlePosterClick = (event) => {
         history.push(`/details/${event.target.id}`);
     }
@@ -24,7 +26,7 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div className="movie_card" key={movie.id} >
+                        <div className="movie_card" key={movie.id}>
                             <img id={movie.id} onClick={handlePosterClick} src={movie.poster} alt={movie.title}/>
                             <h3>{movie.title}</h3>
                         </div>

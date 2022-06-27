@@ -16,8 +16,10 @@ router.get('/', (req, res) => {
 
 });
 
-// *********************************
 router.get('/:details', (req, res) => {
+  // Our query includes two joins to the junction table 'movie_genres'.
+  // Along with the basic details ,we array aggregate all the genres
+  //  associated with the specified movie.
   const query = `SELECT
                     movies.title,
                     movies.poster,
@@ -42,7 +44,6 @@ router.get('/:details', (req, res) => {
       res.sendStatus(500);
     })
 })
-// *********************************
 
 
 router.post('/', (req, res) => {

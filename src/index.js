@@ -18,8 +18,7 @@ function* rootSaga() {
 }
 
 function* getMovieDetails(action) {
-    // get all details on a specific movie from DB
-    console.log('this is action.payload.id', action.payload.id);
+    // Get all details on a specific movie from DB
     try {
         const details = yield axios.get(`/api/movie/${action.payload.id}`);
         yield put({
@@ -37,7 +36,6 @@ function* fetchAllMovies() {
     // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
-        console.log('get all:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
 
     } catch {

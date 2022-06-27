@@ -8,7 +8,8 @@ function Details() {
     const dispatch = useDispatch();
     const movieDetails = useSelector(store => store.details);
 
-    console.log('this is id', id);
+    // On page load, dispatch to fetch the details
+    //  on a specific movie based on the url param.
     useEffect(() => {
         dispatch({
             type: 'GET_DETAILS',
@@ -19,6 +20,7 @@ function Details() {
     return (
         <>
             <main>
+                {/* If movie is true, render fetched details */}
                 {movieDetails &&
                         <div className='details_container'>
                             <div className='poster_details'>
@@ -26,6 +28,7 @@ function Details() {
                                 <h2>{movieDetails[0].title}</h2>
                             </div>
                             <div className='movie_specs'>
+                                {/* Map through array of the movie's genres */}
                                 {movieDetails[0].array_agg.map((item) => {
                                         return (
                                             <h4 key={item}>{item}</h4>
