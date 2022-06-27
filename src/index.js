@@ -21,6 +21,8 @@ function* getMovieDetails(action) {
     // Get all details on a specific movie from DB
     try {
         const details = yield axios.get(`/api/movie/${action.payload.id}`);
+        // 'put', aka another dispatch, to set the state in 
+        //      the 'details' reducer.
         yield put({
             type: 'SET_DETAILS',
             payload: details.data
@@ -36,6 +38,7 @@ function* fetchAllMovies() {
     // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
+        // put/dispatch to set the state of the 'movies' reducer.
         yield put({ type: 'SET_MOVIES', payload: movies.data });
 
     } catch {
@@ -47,6 +50,7 @@ function* fetchAllMovies() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+// 'details' Reducer
 // Store selected movie's details
 const details = (state = null, action) => {
     switch (action.type) {
@@ -57,6 +61,7 @@ const details = (state = null, action) => {
     }
 }
 
+// 'movies' Reducer
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
@@ -67,6 +72,7 @@ const movies = (state = [], action) => {
     }
 }
 
+// 'genres' Reducer
 // Used to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {

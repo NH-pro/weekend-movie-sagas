@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// GET /api/movie
+// Returns a list of movies
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
@@ -16,10 +18,9 @@ router.get('/', (req, res) => {
 
 });
 
-router.get('/:details', (req, res) => {
-  // Our query includes two joins to the junction table 'movie_genres'.
-  // Along with the basic details ,we array aggregate all the genres
-  //  associated with the specified movie.
+// GET /api/movie/:id
+// Returns a single movie and its genres in an array.
+router.get('/:id', (req, res) => {
   const query = `SELECT
                     movies.title,
                     movies.poster,
@@ -33,7 +34,7 @@ router.get('/:details', (req, res) => {
                   WHERE movies.id = $1
                   GROUP BY movies.id;
                 `
-  const params = [req.params.details];
+  const params = [req.params.id];
 
   pool.query(query,params)
     .then (result => {
@@ -45,7 +46,9 @@ router.get('/:details', (req, res) => {
     })
 })
 
-
+// POST /api/movie
+// Creates a movie
+// Still working on this part
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie

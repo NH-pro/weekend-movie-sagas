@@ -16,8 +16,8 @@ function MovieList() {
 
     // When movie poster img is clicked, go to the
     //  details component with a movie specific url param.
-    const handlePosterClick = (event) => {
-        history.push(`/details/${event.target.id}`);
+    const handlePosterClick = (id) => {
+        history.push(`/details/${id}`);
     }
 
     return (
@@ -27,7 +27,7 @@ function MovieList() {
                 {movies.map(movie => {
                     return (
                         <div className="movie_card" key={movie.id}>
-                            <img id={movie.id} onClick={handlePosterClick} src={movie.poster} alt={movie.title}/>
+                            <img onClick={() => handlePosterClick(movie.id)} src={movie.poster} alt={movie.title}/>
                             <h3>{movie.title}</h3>
                         </div>
                     );
