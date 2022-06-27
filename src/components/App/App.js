@@ -8,6 +8,8 @@ function App() {
   return (
     <div className="App">
       <Header />
+      
+      {/* Home page */}
       <Router>        
         <Route path="/" exact>
           <MovieList />
