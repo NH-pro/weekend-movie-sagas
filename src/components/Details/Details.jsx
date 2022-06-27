@@ -8,7 +8,6 @@ function Details() {
     const dispatch = useDispatch();
     const movieDetails = useSelector(store => store.details);
 
-    console.log('this is id', id);
     useEffect(() => {
         dispatch({
             type: 'GET_DETAILS',
