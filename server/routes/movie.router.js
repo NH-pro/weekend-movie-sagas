@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
                     movies.title,
                     movies.poster,
                     movies.description,
-                    ARRAY_AGG(genres.name)
+                    array_agg(genres.name) AS genres
                   FROM movies_genres
                   JOIN movies
                   ON movie_id = movies.id
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
 
   pool.query(query,params)
     .then (result => {
-      res.send(result.rows);
+      res.send(result.rows[0]); // <-- this makes the data we get back not an array.
     })
     .catch(err => {
       console.log(`Error in Router GET /:details`, err);

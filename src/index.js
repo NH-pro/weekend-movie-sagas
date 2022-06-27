@@ -20,7 +20,7 @@ function* rootSaga() {
 function* getMovieDetails(action) {
     // Get all details on a specific movie from DB
     try {
-        const details = yield axios.get(`/api/movie/${action.payload.id}`);
+        const details = yield axios.get(`/api/movie/${action.payload.id}`); // <-- 'yield' means "wait for axios to get back", then go.
         // 'put', aka another dispatch, to set the state in 
         //      the 'details' reducer.
         yield put({
