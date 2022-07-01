@@ -8,9 +8,9 @@ function AddMovie() {
 
     // local states
     const [title, setTitle] = useState('');
-    const [movieImage, setMovieImage] = useState('');
+    const [poster, setMovieImage] = useState('');
     const [description, setDescription] = useState('');
-    const [movieGenre, setMovieGenre] = useState('');
+    const [genre_id, setMovieGenre] = useState('');
 
     useEffect(() => {
         dispatch({
@@ -18,21 +18,44 @@ function AddMovie() {
         })
     },[]);
 
+    const dispatchMovie = (event) => {
+        event.preventDefault();
+        const form = document.getElementById("addMovieForm");
+        const newMovie = {
+            title,
+            poster,
+            description,
+            genre_id
+        }
+
+        if(!genre_id || !title) {
+            alert('missing title or genre field');
+            return;
+        }
+
+        dispatch({
+            type: 'ADD_MOVIE',
+            payload: newMovie
+        })
+
+        form.reset();
+    }
 
 
     return (
         <main>
-            <form>
-                <input type="text" placeholder="movie title"/>
+            <form id="addMovieForm" onSubmit={dispatchMovie}>
+                <input onChange={(event) => {setTitle(event.target.value)}} type="text" placeholder="movie title"/>
                 <br/>
-                <input type="text" placeholder="movie image url"/>
+                <input onChange={(event) => {setMovieImage(event.target.value)}} type="text" placeholder="movie image url"/>
                 <br/>
-                <textarea rows="5" cols="30" placeholder="movie description"></textarea>
+                <textarea onChange={(event) => {setDescription(event.target.value)}} rows="5" cols="30" placeholder="movie description"/>
                 <br/>
-                <select>
+                <select onChange={(event) => {setMovieGenre(event.target.value)}}>
+                    <option>...</option>
                     {genres.map(genre => {
                         return (
-                            <option key={genre.id} value={genre.name}>{genre.name}</option>
+                            <option key={genre.id} value={genre.id}>{genre.name}</option>
                         )
                     })}
                 </select>
