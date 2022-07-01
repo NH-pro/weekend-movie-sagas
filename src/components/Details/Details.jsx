@@ -15,7 +15,7 @@ function Details() {
             type: 'GET_DETAILS',
             payload: id
         })
-    }, []);
+    },[]);
 
     return (
         <>
